@@ -26,12 +26,27 @@ public class Solution04 {
 				map.put(nums[i],1);
 			}
 		}
-		int res=-1;
+
+		int firstValue=0;
+		int first=0;
+		int secondValue=0;
+		int second=0;
 		
 		for(int key: map.keySet()){
-
+			if(map.get(key)> firstValue && map.get(key)> secondValue){
+				second=first;
+				first=key;
+				
+				secondValue=firstValue;
+				firstValue=map.get(key);
+				
+			}
+			else if(map.get(key) > secondValue){
+				second=key;
+				secondValue=map.get(key);
+			}
 		}
-		return res;
+		return second;
 	}
 	
 }
